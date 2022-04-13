@@ -14,74 +14,57 @@ import { ProgressStep } from '../components/40k-log/types';
 const EXPECTED_STEPS = ['start', 'assembled', 'paint', 'done'];
 
 const tauRawSteps = [
-  '19/19 Fire Warriors [done] [fwall]',
+  '30/30 Fire Warriors [done] [fwall]',
   '13/22 Drone tops [paint]',
   '13/22 Drone bottoms (special, shield and markerlight bottoms) [paint]',
   '10/10 Pathfinders [done] [pall]',
-  "6/6 Crisis suits (4x Shas'ui, 2x Shas'vre) [done] [c3]",
-  '1/1 Broadside (missile pods, smart missiles, seeker missile) [done]',
+  '7/7 Crisis suits [done] [c3]',
+  '3/3 Broadsides [done]',
   '1/1 Ethereal [done]',
   '1/1 Commander 1 [done]',
+  '1/1 Stormsurge [done]',
+  '2/2 Devifish [done]',
   '0/1 Cadre Fireblade [assembled]',
-  '0/1 Riptide (magnetize weapons) [paint]',
+  '1/1 Riptide [done]',
   '0/1 Dahyak Grekh [assembled]',
-  '0/2 DS8 Turrets [assembled]',
-  '0/3 Stealth Suits [assembled]',
-  '0/1 Stealth Suit drone [assembled]',
-  '0/1 Shadowsun [assembled]',
-  '0/2 Shadowsun drones [assembled]',
+  '4/4 Stealth Suits [done]',
+  '0/3 Shadowsun [assembled]',
   '0/1 Commander 2 [start]',
-  '0/1 Commander 2 drone [start]',
-  '0/??? Sept markings [start]',
-  '20/??? Extra weapons (3 carbines, crisis suit weapons, gun drone bottoms) [assembled]',
+  '20/20 Kroot [done]',
+  '0/4 Kroot Hounds [start]',
 ];
 
 const spaceWolvesRawSteps = [
   '0/1 Indomitus Captain [start]',
   '0/1 Indomitus Lieutenant [assembled]',
   '0/1 Indomitus Chaplain [assembled]',
-  '0/1 Chaplain on a Bike [start]',
+  '1/1 Chaplain on a Bike [done]',
   '0/1 Judiciar [assembled]',
   '0/1 Terminator Chaplain [start]',
-  '0/1 Wolf Lord on a Thunderwolf [start]',
+  '1/1 Wolf Lord on a Thunderwolf [done]',
   '0/1 Canis Wolfborn [start]',
   '0/1 Ragnar Blackmane [assembled]',
-  '0/1 Phobos Librarian [start]',
-  '0/1 Librarian [start]',
-  '0/3 Thunderwolf Cavalry [paint]',
-  '0/9 Thunderwolf Cavalry [start]',
-  '0/3 Bladeguard Veterans [assembled]',
+  '1/1 Phobos Librarian [done]',
+  '1/1 Librarian [done]',
+  '10/10 Thunderwolf Cavalry [done]',
+  '3/3 Bladeguard Veterans [assembled]',
   '0/1 Bladeguard Ancient [assembled]',
   '5/5 Assault Intercessors [done]',
-  '0/5 Assault Intercessors [assembled]',
+  '1/5 Assault Intercessors [assembled]',
   '0/3 Outriders [assembled]',
-  '0/3 Eradicators [assembled]',
-  '0/1 Wolf Dreadnought [assembled]',
+  '3/3 Eradicators [done]',
+  '1/1 Wulfen Dreadnought [done]',
   '0/1 Invictor Warsuit [assembled]',
-  '0/10 Incursors [start]',
+  '10/10 Incursors [done]',
   '0/10 Intercessors [start]',
   '0/5 Hounds of Morkai [assembled]',
   '5/5 Fenrisian Wolves [done]',
-  '0/10 Wolf Guard with Jump packs [start]',
+  '15/15 Wolf Guard with Jump packs [done]',
   '0/5 Wolf Guard Terminators [start]',
-  '0/5 Long Fangs [start]',
-  '0/2 Cyberwolves [start]',
-  '0/1 Redemptor Dreadnought [start]',
-];
-
-const indomitusRawSteps = [
-  '0/4 MDF ruins [paint]',
-  '0/1 MDF building [paint]',
-  '0/3 MDF crates [paint]',
-  '0/1 Overlord [start]',
-  '0/1 Royal Warden [start]',
-  '0/1 Plasmancer [start]',
-  '0/1 Skorpekh Lord [assembled]',
-  '0/3 Skorpekh Destroyers [assembled]',
-  '0/2 Cryptothralls [start]',
-  '0/1 Canoptek Reanimator [start]',
-  '0/20 Necron Warriors [assembled]',
-  '0/6 Canoptek Scarab Swarms [assembled]',
+  '12/12 Long Fangs [done]',
+  '2/2 Cyberwolves [done]',
+  '1/1 Redemptor Dreadnought [done]',
+  '1/1 Jump Pack Captain [done]',
 ];
 
 function parseStep(stepStr: string): ProgressStep | null {
@@ -245,7 +228,6 @@ interface Props {
 
 function ProjectLog({ data }: Props): JSX.Element {
   const tauSteps = useMemo(() => parseSteps(tauRawSteps), []);
-  const indomitusSteps = useMemo(() => parseSteps(indomitusRawSteps), []);
   const spaceWolvesSteps = useMemo(() => parseSteps(spaceWolvesRawSteps), []);
 
   return (
@@ -278,11 +260,8 @@ function ProjectLog({ data }: Props): JSX.Element {
       <Themed.h2>T&apos;au army progress</Themed.h2>
       <ProjectProgress steps={tauSteps} />
 
-      <Themed.h2>Space Wolves steps</Themed.h2>
+      <Themed.h2>Space Wolves progress</Themed.h2>
       <ProjectProgress steps={spaceWolvesSteps} />
-
-      <Themed.h2>Pile of shame progress</Themed.h2>
-      <ProjectProgress steps={indomitusSteps} />
 
       <section>
         <Themed.h3>Updates</Themed.h3>
