@@ -1,8 +1,8 @@
 /** @jsx jsx **/
 import { Themed, jsx } from 'theme-ui';
 import styled from '@emotion/styled';
-import { Link } from 'gatsby';
 import { PostProps } from '../utils/types';
+import BlogLink from './BlogLink';
 import TagList from './tags/TagList';
 
 const Card = styled.div`
@@ -32,9 +32,7 @@ const BlogCard = ({
         marginBottom: '0',
       }}
     >
-      <Themed.a as={Link} to={slug}>
-        {title}
-      </Themed.a>
+      <BlogLink to={slug}>{title}</BlogLink>
     </Themed.h3>
     <time dateTime={computerDate} sx={{ gridArea: 'date', color: 'muted' }}>
       {date}
